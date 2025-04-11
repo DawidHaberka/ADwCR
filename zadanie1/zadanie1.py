@@ -5,15 +5,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Witaj w moim API!"
+    return "Witaj w moim API! test"
 
 @app.route('/mojastrona')
 def mojastrona():
-    return "To jest moja strona!"
+    return "To jest moja strona! test"
 
 @app.route('/hello')
 def hello():
-    name = request.args.get('name', 'nieznajomy')
+    name = request.args.get('name', 'nieznajomy test')
     return f"Cześć, {name}!"
 
 @app.route('/api/v1.0/predict')
@@ -23,7 +23,7 @@ def predict():
         num2 = float(request.args.get('num2', 0))
         result = 1 if (num1 + num2) > 5.8 else 0
         return {
-            "prediction": result,
+            "prediction test": result,
             "features": {
                 "num1": num1,
                 "num2": num2
