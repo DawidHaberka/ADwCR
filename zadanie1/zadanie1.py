@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Witaj w moim API test !"
+    return "Witaj w moim API!"
 
 @app.route('/mojastrona')
 def mojastrona():
@@ -12,7 +12,7 @@ def mojastrona():
 
 @app.route('/hello')
 def hello():
-    name = request.args.get('name', 'nieznajomy test ')
+    name = request.args.get('name', 'gościu')
     return f"Cześć, {name}!"
 
 @app.route('/api/v1.0/predict')
@@ -22,7 +22,7 @@ def predict():
         num2 = float(request.args.get('num2', 0))
         result = 1 if (num1 + num2) > 5.8 else 0
         return {
-            "prediction test": result,
+            "prediction": result,
             "features": {
                 "num1": num1,
                 "num2": num2
@@ -32,4 +32,4 @@ def predict():
         return {"error": "Invalid input"}, 400
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
